@@ -51,7 +51,7 @@ public class MoneyTransferTest {
 
     @Test
     @DisplayName("Проверка перевода денег на карту с неверным номером")
-    void shouldTransferMoneyFromCardTwoToCardOneover13(){ //убери
+    void shouldShowErrorIfCardIsNotTheSame(){
         val loginPage = open(serviceUrl, LoginPage.class);
         val authInfo = DataHelper.getAuthInfo();
         val verificationPage = loginPage.validLogin(authInfo);

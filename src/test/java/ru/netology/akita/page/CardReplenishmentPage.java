@@ -1,10 +1,8 @@
 package ru.netology.akita.page;
 
 import com.codeborne.selenide.SelenideElement;
-import lombok.val;
 import ru.netology.akita.data.DataHelper;
 
-import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,7 +20,7 @@ public class CardReplenishmentPage {
         heading.shouldBe(visible);
     }
 
-    public DashboardPage ReplenishmentCardOne(int amount, DataHelper.CardNumber cardNumber){
+    public DashboardPage replenishmentCardOne(int amount, DataHelper.CardNumber cardNumber){
         fieldAmount.setValue(String.valueOf(amount));
         fieldFrom.setValue(cardNumber.getNumber());
         fieldTo.find(withText("**** **** **** 0001"));
@@ -30,7 +28,7 @@ public class CardReplenishmentPage {
         return new DashboardPage();
     }
 
-    public DashboardPage ReplenishmentCardTwo(int amount, DataHelper.CardNumber cardNumber){
+    public DashboardPage replenishmentCardTwo(int amount, DataHelper.CardNumber cardNumber){
         fieldAmount.setValue(String.valueOf(amount));
         fieldFrom.setValue(cardNumber.getNumber());
         fieldTo.find(withText("**** **** **** 0002"));

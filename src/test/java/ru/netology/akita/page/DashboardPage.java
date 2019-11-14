@@ -18,12 +18,12 @@ public class DashboardPage {
         heading.shouldBe(visible);
     }
 
-    public CardReplenishmentPage ChoiceCardOne(){
+    public CardReplenishmentPage choiceCardOne(){
         replenishCardOne.click();
         return new CardReplenishmentPage();
     }
 
-    public CardReplenishmentPage ChoiceCardTwo(){
+    public CardReplenishmentPage choiceCardTwo(){
         replenishCardTwo.click();
         return new CardReplenishmentPage();
     }

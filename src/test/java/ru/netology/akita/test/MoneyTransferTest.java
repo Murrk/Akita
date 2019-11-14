@@ -12,6 +12,8 @@ import ru.netology.akita.page.LoginPage;
 
 public class MoneyTransferTest {
     private String serviceUrl = "http://localhost:9999/";
+    private int amount1000 = 1000;
+    private int amount20000 = 20000;
 
     @Test
     @DisplayName("Успешное пополнение карты один с карты два")
@@ -21,14 +23,14 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        val getBalanceOneCardBefore = dashboardPage.getBalanceOneCard();
-        val getBalanceTwoCardBefore = dashboardPage.getBalanceOneCard();
-        dashboardPage.ChoiceCardOne();
+        val balanceFirstCardBefore = dashboardPage.getBalanceOneCard();
+        val balanceSecondCardBefore = dashboardPage.getBalanceTwoCard();
+        dashboardPage.choiceCardOne();
         val cardNumberTwo = DataHelper.getCardNumberTwo();
         val cardReplenishmentPage = new CardReplenishmentPage();
-        cardReplenishmentPage.ReplenishmentCardOne(1000, cardNumberTwo);
-        assertEquals(getBalanceOneCardBefore + 1000,dashboardPage.getBalanceOneCard());
-        assertEquals(getBalanceTwoCardBefore - 1000,dashboardPage.getBalanceTwoCard());
+        cardReplenishmentPage.replenishmentCardOne(amount1000, cardNumberTwo);
+        assertEquals(balanceFirstCardBefore + amount1000,dashboardPage.getBalanceOneCard());
+        assertEquals(balanceSecondCardBefore - amount1000,dashboardPage.getBalanceTwoCard());
     }
 
     @Test
@@ -39,14 +41,14 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        val getBalanceOneCardBefore = dashboardPage.getBalanceOneCard();
-        val getBalanceTwoCardBefore = dashboardPage.getBalanceOneCard();
-        dashboardPage.ChoiceCardTwo();
+        val balanceFirstCardBefore = dashboardPage.getBalanceOneCard();
+        val balanceSecondCardBefore = dashboardPage.getBalanceTwoCard();
+        dashboardPage.choiceCardTwo();
         val cardNumberOne = DataHelper.getCardNumberOne();
         val cardReplenishmentPage = new CardReplenishmentPage();
-        cardReplenishmentPage.ReplenishmentCardTwo(1000, cardNumberOne);
-        assertEquals(getBalanceOneCardBefore - 1000,dashboardPage.getBalanceOneCard());
-        assertEquals(getBalanceTwoCardBefore + 1000,dashboardPage.getBalanceTwoCard());
+        cardReplenishmentPage.replenishmentCardTwo(amount1000, cardNumberOne);
+        assertEquals(balanceFirstCardBefore - amount1000,dashboardPage.getBalanceOneCard());
+        assertEquals(balanceSecondCardBefore + amount1000,dashboardPage.getBalanceTwoCard());
     }
 
     @Test
@@ -57,10 +59,10 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        dashboardPage.ChoiceCardTwo();
+        dashboardPage.choiceCardTwo();
         val cardNumberOne = DataHelper.getCardNumberForError();
         val cardReplenishmentPage = new CardReplenishmentPage();
-        cardReplenishmentPage.ReplenishmentCardTwo(1000, cardNumberOne);
+        cardReplenishmentPage.replenishmentCardTwo(amount1000, cardNumberOne);
         cardReplenishmentPage.errorNotification();
     }
 
@@ -72,10 +74,10 @@ public class MoneyTransferTest {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         val dashboardPage = verificationPage.validVerify(verificationCode);
-        dashboardPage.ChoiceCardOne();
+        dashboardPage.choiceCardOne();
         val cardNumberTwo = DataHelper.getCardNumberTwo();
         val cardReplenishmentPage = new CardReplenishmentPage();
-        cardReplenishmentPage.ReplenishmentCardOne(20000, cardNumberTwo);
+        cardReplenishmentPage.replenishmentCardOne(amount20000, cardNumberTwo);
         cardReplenishmentPage.errorNotification();
     }
 }

@@ -1,6 +1,6 @@
-# Patterns [![Build status](https://ci.appveyor.com/api/projects/status/aofcsv4h3rrgxbpi?svg=true)](https://ci.appveyor.com/project/Murrk/akita)
+# Page Object's [![Build status](https://ci.appveyor.com/api/projects/status/aofcsv4h3rrgxbpi?svg=true)](https://ci.appveyor.com/project/Murrk/akita)
 
-## Домашнее задание к занятию «2.4. Patterns»
+## Домашнее задание к занятию «2.4. Page Object's»
 
 ## Задача №1 - Page Object's
 
